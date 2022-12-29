@@ -1,0 +1,26 @@
+p {
+  font-family: Lato;
+}
+
+/* .ng-invalid.ng-dirty:not(form), .ng-invalid:not(form).form-submitted {
+  border: solid 2px	#D40000;
+} */
+
+.required-radio-error {
+  /* background-color : #D40000; */
+  border: 0px solid #fff;
+  box-shadow: 0 0 1px 1px #d40000;
+}
+
+.radioBut-error-style {
+  color: #d40000;
+}
+
+/* .required-question {
+  color : #d40000;
+} */
+
+form h3.required:after{
+  color : #d40000;
+  content: "*";
+}

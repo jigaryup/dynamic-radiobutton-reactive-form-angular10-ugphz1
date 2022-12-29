@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Form Starts -->
+			<form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+				<div formGroupName="radioAnswers">
+					<!-- Movie Questions -->
+					<div class="group-gap" *ngFor="let el of questionsList; let i = index">
+						<h3 class="mb-3">{{el.question.title}}</h3>
+						<!-- Radio Button Answers -->
+						<div class="custom-radio" *ngFor="let item of el.question.answers; let j = index">
+							<input id="rad1" type="radio" [value]="item" formControlName="radio{{i}}" [ngClass]="{'is-invalid':f.radioAnswers.get('radio0').errors}">
+							<label for="rad1">{{item}}</label>
+						</div>
+						<!-- Validation Message -->
+						<div *ngIf="f.radioAnswers.errors" class="invalid-feedback">
+							<div *ngIf="f.radioAnswers.get(" radio0").errors.required">
+								Radio button required
+							</div>
+						</div>
+						<br>
+						<span>{{f.radioAnswers.get("radio0").value | json}}</span>
+						<span>{{f.radioAnswers.get("radio1").value | json}}</span>
+						<span>{{f.radioAnswers.get("radio2").value | json}}</span>
+					</div>
+					<!-- END OF formGroupName -->
+
+					<!-- Submit Button -->
+					<button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+			</form>
+			<!-- End of Form -->
+		</div>
+	</div>
+</div>

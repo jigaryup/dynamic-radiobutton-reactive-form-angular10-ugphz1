@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Form Starts -->
+			<form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+				<div formGroupName="radioAnswers">
+					<!-- Movie Questions -->
+					<div class="group-gap" *ngFor="let el of questionsList; let i = index">
+						<h3 class="mb-3 required">{{el.question.title}}</h3>
+						<!-- Radio Button Answers -->
+						<div class="custom-radio" *ngFor="let item of el.question.answers; let j = index">
+							<input id="rad1" type="radio" [value]="item" formControlName="radio{{i}}">
+							<label for="rad1">{{item}}</label>
+						</div>
+						<!-- End Radio Answers -->
+					</div>
+					<!-- Radio Buttons Validation -->
+					<div class="invalid-feedback radioBut-error-style"
+						*ngIf="isSubmitted && f.radioAnswers.get('radio0').errors?.required">
+						<p>Please select a movie genre</p>
+					</div>
+					<div class="invalid-feedback radioBut-error-style"
+						*ngIf="isSubmitted && f.radioAnswers.get('radio1').errors?.required">
+						<p>Please select a to-go snack</p>
+					</div>
+					<div class="invalid-feedback radioBut-error-style"
+						*ngIf="isSubmitted && f.radioAnswers.get('radio2').errors?.required">
+						<p>Please select a to-go beverage</p>
+					</div>
+					<!-- End Radio Questions -->
+				</div>
+				<!-- End formGroupName -->
+				<!-- Submit Button -->
+				<button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+			</form>
+			<!-- End of Form -->
+		</div>
+	</div>
+</div>
